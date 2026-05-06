@@ -1,0 +1,70 @@
+import json
+
+try:
+    data = json.load(open("data.json"))
+    income = data["income"]
+    expenses = data["expenses"]
+except:
+    income = []
+    expenses = []
+
+
+while True:
+    print("\n-------- FinZPT -------- \n")
+    print('1. Income')
+    print('2. Expenses')
+    print('3. View Summary')
+    print('4. Exit\n')
+
+    choice = input('Make an option: \n')
+
+    if choice == '4':
+        print ("Goodbye!!!\n")
+        json.dump({"income": income, "expenses": expenses}, open("data.json", "w"))
+        break
+
+    # Income Section
+    elif choice == '1':
+        source = input("How did you earn it:\n")
+        amount = float( input ( "What Amount:\n"))
+        income.append({"source": source, "amount": amount})
+        print ("Saved!!!\n Great to doing business.")
+    
+
+    # Expenses Section
+    elif choice == '2':
+        #print ('\nAdd your spending')
+  
+        category = input("Choose your spending category : \n")
+        item = input ('What did you buy : \n')
+        amount = float ( input ('Amount : \n'))
+        expenses.append ( {
+            'category' : category, 
+            'item' : item, 
+            'amount' : amount 
+            })
+        print ("Saved!!!\n Great to doing business.")
+
+
+       
+    elif choice == '3':
+        #print ('\nThis is your economy')
+        print ('\n ----- Economy -----\n')
+        print ('\n -- Income --\n')
+
+        for x in income:
+            print ( x['source'], '=', x['amount'])
+        
+        print ('\n -- Expenses --\n')
+        for x in expenses:
+            print (x['category'], '-', x['item'], '=', x['amount'])
+        
+        print ('\n --- Summary ---\n')
+        total_income = sum( x['amount'] for x in income)
+        total_expenses = sum( x['amount'] for x in expenses)
+        balance = total_income - total_expenses
+
+        print ('\nTotal Income : ', total_income)
+        print ('Total Expenses : ', total_expenses)
+        print ('Balance        : ', balance)
+

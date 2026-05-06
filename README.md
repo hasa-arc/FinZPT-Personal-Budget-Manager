@@ -19,7 +19,7 @@ A command-line personal finance tracker built with core Python. Track your incom
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/hasa-ark/FinZPT.git
+git clone https://github.com/hasa-arc/FinZPT.git
 cd FinZPT
 ```
 

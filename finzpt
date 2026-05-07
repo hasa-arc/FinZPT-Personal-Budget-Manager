@@ -37,7 +37,13 @@ while True:
   
         category = input("Choose your spending category : \n")
         item = input ('What did you buy : \n')
-        amount = float ( input ('Amount : \n'))
+
+        try:
+            amount = float(input('Amount : \n'))
+        except:
+            print("Please enter a number.")
+            continue
+
         expenses.append ( {
             'category' : category, 
             'item' : item, 
